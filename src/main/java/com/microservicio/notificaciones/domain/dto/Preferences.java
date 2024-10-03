@@ -6,7 +6,6 @@ public class Preferences {
     private String language;
     private Boolean privacy;
     private Boolean darkMode;
-    private int id_notification;
 
     public Long getIdPreferences() {
         return idPreferences;
@@ -46,20 +45,6 @@ public class Preferences {
 
     public void setDarkMode(Boolean darkMode) {
         this.darkMode = darkMode;
-    }
-
-    public int getId_notification() {
-        return id_notification;
-    }
-
-    public void setId_notification(int id_notification) {
-        this.id_notification = id_notification;
-    }
-
-    
-    
-    
-
-    
+    }    
 }
 
