@@ -4,28 +4,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.microservicio.notificaciones.domain.dto.NotificationsDto;
-import com.microservicio.notificaciones.domain.service.NotificactionsService;
+
+import com.microservicio.notificaciones.domain.dto.EmailDto;
+import com.microservicio.notificaciones.domain.dto.NotificationResponse;
+import com.microservicio.notificaciones.domain.dto.PushDto;
+import com.microservicio.notificaciones.domain.service.NotificationsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/Notis")
+@RequestMapping("/notificaciones")
 public class NotificationsController {
     
     @Autowired
-    private NotificactionsService notificationService;
+    private NotificationsService notificationService;
 
     @PostMapping("/email")
-    public ResponseEntity<String> enviarNotificacionEmail(@RequestBody NotificationsDto notificacionDto) {
-        String respuesta = notificationService.sendEmailNotification(notificacionDto);
+    public ResponseEntity<NotificationResponse> enviarNotificacionEmail(@RequestBody EmailDto emailDto) {
+        NotificationResponse respuesta = notificationService.sendEmailNotification(emailDto);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
     @PostMapping("/push")
-    public ResponseEntity<String> enviarNotificacionPush(@RequestBody NotificationsDto notificacionDto) {
-        String respuesta = notificationService.sendPushNotification(notificacionDto);
+    public ResponseEntity<NotificationResponse> enviarNotificacionPush(@RequestBody PushDto pushDto) {
+        NotificationResponse respuesta = notificationService.sendPushNotification(pushDto);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
     

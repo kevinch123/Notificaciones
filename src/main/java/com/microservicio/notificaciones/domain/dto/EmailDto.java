@@ -1,6 +1,6 @@
 package com.microservicio.notificaciones.domain.dto;
 
-public class NotificationsDto {
+public class EmailDto {
 
     private String header;
     private String content;
@@ -25,10 +25,5 @@ public class NotificationsDto {
     public void setNotificationType(String notificationType) {
         this.notificationType = notificationType;
     }
-
-
-    
-
-
 }
 
